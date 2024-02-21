@@ -108,11 +108,18 @@ class ForecastViewController: UIViewController {
     private func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(WeatherCollectionViewCell.self, forCellWithReuseIdentifier: WeatherCollectionViewCell.identifier)
+        
+        collectionView.register(
+            WeatherCollectionViewCell.self,
+            forCellWithReuseIdentifier: WeatherCollectionViewCell.identifier
+        )
+        
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(
-                Constants.CityContainerView.top + Constants.CityContainerView.height + Constants.spacing
+                Constants.CityContainerView.top
+                + Constants.CityContainerView.height
+                + Constants.spacing
             )
             make.left.equalToSuperview().offset(Constants.spacing)
             make.right.equalToSuperview().offset(-Constants.spacing)
@@ -182,7 +189,10 @@ extension ForecastViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = manager.location else { return }
-        viewModel.updateDataWith(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        viewModel.updateDataWith(
+            latitude: location.coordinate.latitude,
+            longitude: location.coordinate.longitude
+        )
         map.setupCamera(location)
         locationManager.stopUpdatingLocation()
     }

@@ -31,7 +31,11 @@ private enum Constants {
 extension MKMapView {
     
     func centerToLocation(_ location: CLLocation, regionRadius: CLLocationDistance = Constants.radius) {
-        let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        let region = MKCoordinateRegion(
+            center: location.coordinate,
+            latitudinalMeters: regionRadius,
+            longitudinalMeters: regionRadius
+        )
         setRegion(region, animated: true)
     }
     

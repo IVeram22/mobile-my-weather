@@ -39,8 +39,8 @@ final class NetworkService: INetworkService {
         var endpoint = URLComponents()
         endpoint.path = APIPath.forecast.rawValue
         endpoint.queryItems = [
-            URLQueryItem(name: "appid", value: "64c8067644c1f584904e1e80cda9303e"),
-            URLQueryItem(name: "id", value: "524901"),
+            URLQueryItem(name: "appid", value: .appid),
+            URLQueryItem(name: "id", value: .id),
             URLQueryItem(name: "lang", value: "en"),
             URLQueryItem(name: "q", value: cityName)
         ]
@@ -54,8 +54,8 @@ final class NetworkService: INetworkService {
         var endpoint = URLComponents()
         endpoint.path = APIPath.forecast.rawValue
         endpoint.queryItems = [
-            URLQueryItem(name: "appid", value: "64c8067644c1f584904e1e80cda9303e"),
-            URLQueryItem(name: "id", value: "524901"),
+            URLQueryItem(name: "appid", value: .appid),
+            URLQueryItem(name: "id", value: .id),
             URLQueryItem(name: "lang", value: "en"),
             URLQueryItem(name: "lat", value: "\(latitude)"),
             URLQueryItem(name: "lon", value: "\(longitude)"),

@@ -16,12 +16,6 @@ private enum Constants {
         static let alpha: CGFloat = 0.5
     }
     
-//    enum Shadow {
-//        static let shadowColor: CGColor = UIColor.white.cgColor
-//        static let shadowOpacity: Float = 0.5
-//        static let shadowOffset: CGSize = CGSize(width: 5, height: 5)
-//    }
-    
 }
 
 extension UIView {
@@ -41,14 +35,5 @@ extension UIView {
             make.left.top.right.bottom.equalToSuperview()
         }
     }
-    
-//    func dropShadow(_ radius: CGFloat = Constants.radius) {
-//        layer.masksToBounds = false
-//        layer.shadowColor = Constants.Shadow.shadowColor
-//        layer.shadowOpacity = Constants.Shadow.shadowOpacity
-//        layer.shadowOffset = Constants.Shadow.shadowOffset
-//        layer.shadowRadius = radius
-//        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
-//    }
     
 }

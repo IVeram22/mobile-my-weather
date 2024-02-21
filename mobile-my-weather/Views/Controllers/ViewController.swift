@@ -26,6 +26,15 @@ private enum Constants {
         }
     }
     
+    enum Alert {
+        static let title: String = "Adding weather forecast for"
+        static let message: String = "Do you want to track the weather in"
+        
+        static let addButton: String = "Add"
+        static let cancelButton: String = "Cancel"
+        static let forecastButton: String = "Show forecast only"
+    }
+    
 }
 
 final class ViewController: UIViewController {
@@ -86,7 +95,10 @@ final class ViewController: UIViewController {
         map.showsCompass = false
         map.showsScale = false
         map.addBlackBackground()
-        map.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+        map.addGestureRecognizer(UITapGestureRecognizer(
+            target: self,
+            action: #selector(hideKeyboard)
+        ))
     }
     
     private func setupSearchBar() {
@@ -107,15 +119,23 @@ final class ViewController: UIViewController {
         locationsTable.setDefaultSetting()
         locationsTable.delegate = self
         locationsTable.dataSource = self
-        locationsTable.register(LocationTableViewCell.self, forCellReuseIdentifier: LocationTableViewCell.identifier)
+        locationsTable.register(
+            LocationTableViewCell.self,
+            forCellReuseIdentifier: LocationTableViewCell.identifier
+        )
         
-        locationsTable.register(SearchCityContainerView.self, forCellReuseIdentifier: SearchCityContainerView.identifier)
+        locationsTable.register(
+            SearchCityContainerView.self,
+            forCellReuseIdentifier: SearchCityContainerView.identifier
+        )
         
         view.addSubview(locationsTable)
         locationsTable.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom)
-            make.left.bottom.equalToSuperview().offset(Constants.LocationsTable.Constraints.spacing)
-            make.right.bottom.equalToSuperview().offset(-Constants.LocationsTable.Constraints.spacing)
+            make.left.bottom.equalToSuperview()
+                .offset(Constants.LocationsTable.Constraints.spacing)
+            make.right.bottom.equalToSuperview()
+                .offset(-Constants.LocationsTable.Constraints.spacing)
             make.bottom.equalToSuperview()
         }
     }
@@ -130,23 +150,32 @@ final class ViewController: UIViewController {
     
     private func showWeatherDisplayConfirmation(with cityName: String) {
         let alert = UIAlertController(
-            title: "Adding weather forecast for \(cityName)",
-            message: "Do you want to track the weather in \(cityName)?",
+            title: "\(Constants.Alert.title) \(cityName)",
+            message: "\(Constants.Alert.message) \(cityName)?",
             preferredStyle: .alert
         )
         
-        alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak self] _ in
+        alert.addAction(UIAlertAction(
+            title: Constants.Alert.addButton,
+            style: .default,
+            handler: { [weak self] _ in
             self?.viewModel.addCity(with: cityName)
             self?.showLocations()
             self?.navigeteToForecast(with: cityName)
         }))
         
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { [weak self] _ in
+        alert.addAction(UIAlertAction(
+            title: Constants.Alert.cancelButton,
+            style: .cancel,
+            handler: { [weak self] _ in
             self?.showLocations()
         }))
         
-        alert.addAction(UIAlertAction(title: "Show forecast only", style: .destructive, handler: { [weak self] _ in
+        alert.addAction(UIAlertAction(
+            title: Constants.Alert.forecastButton,
+            style: .destructive,
+            handler: { [weak self] _ in
             self?.showLocations()
             self?.navigeteToForecast(with: cityName, isPresent: true)
         }))

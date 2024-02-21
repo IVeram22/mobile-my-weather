@@ -9,7 +9,6 @@ import SnapKit
 
 
 private enum Constants {
-    
     enum Fonts {
         static let dateLabel: UIFont = UIFont.systemFont(ofSize: 23)
         static let temperatureLabel: UIFont = UIFont.systemFont(ofSize: 43)

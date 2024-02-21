@@ -45,7 +45,7 @@ final class LocationsManager {
     
     func addCity(with cityName: String) {
         var cities = load()
-        // TODO: Contains
+        if cities.contains(cityName) { return }
         cities.append(cityName)
         save(with: cities)
     }
