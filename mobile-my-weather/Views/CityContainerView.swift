@@ -9,7 +9,6 @@ import SnapKit
 
 
 private enum Constants {
-    
     enum Fonts {
         static let cityName: UIFont = UIFont.systemFont(ofSize: 43)
         static let date: UIFont = UIFont.systemFont(ofSize: 23)
