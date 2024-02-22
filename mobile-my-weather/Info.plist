@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Pls</string>
+	<string>Allow My Weather to access your location while using the app to provide accurate weather updates for your current location and added cities.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Pls</string>
+	<string>Enable location access for My Weather to ensure continuous weather tracking for your current location and added cities, even when the app is not in use.</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
